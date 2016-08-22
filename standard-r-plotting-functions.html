@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data preparation, processing and interpretation with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R">
+  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data preparation, processing and interpretation with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data preparation, processing and interpretation with R" />
+  
+  <meta name="twitter:description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R" />
+  
+
+<meta name="author" content="QFAB">
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="charts-and-graphical-output.html">
+<link rel="next" href="ggplot2.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data processing, quality checking & interpretation with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i><b>1.1</b> How to read this book</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1.2</b> Getting started</a></li>
+<li class="chapter" data-level="1.3" data-path="a-quick-refresher.html"><a href="a-quick-refresher.html"><i class="fa fa-check"></i><b>1.3</b> A quick refresher</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>2</b> Data Preparation</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-lifecycle-management-plan.html"><a href="data-lifecycle-management-plan.html"><i class="fa fa-check"></i><b>2.1</b> Data Lifecycle &amp; Management Plan</a></li>
+<li class="chapter" data-level="2.2" data-path="good-data-protocol.html"><a href="good-data-protocol.html"><i class="fa fa-check"></i><b>2.2</b> Good Data Protocol</a></li>
+<li class="chapter" data-level="2.3" data-path="further-reading.html"><a href="further-reading.html"><i class="fa fa-check"></i><b>2.3</b> Further Reading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="reproducible-reporting-in-r.html"><a href="reproducible-reporting-in-r.html"><i class="fa fa-check"></i><b>3</b> Reproducible reporting in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="literate-programming.html"><a href="literate-programming.html"><i class="fa fa-check"></i><b>3.1</b> Literate programming</a></li>
+<li class="chapter" data-level="3.2" data-path="open-a-new-knitr-document.html"><a href="open-a-new-knitr-document.html"><i class="fa fa-check"></i><b>3.2</b> Open a new knitR document</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-and-reformatting-data-files.html"><a href="importing-and-reformatting-data-files.html"><i class="fa fa-check"></i><b>4</b> Importing and reformatting data files</a><ul>
+<li class="chapter" data-level="4.1" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>4.1</b> Importing data</a></li>
+<li class="chapter" data-level="4.2" data-path="reformat-the-file.html"><a href="reformat-the-file.html"><i class="fa fa-check"></i><b>4.2</b> Reformat the file</a></li>
+<li class="chapter" data-level="4.3" data-path="transform-data.html"><a href="transform-data.html"><i class="fa fa-check"></i><b>4.3</b> Transform data</a></li>
+<li class="chapter" data-level="4.4" data-path="normalise-data.html"><a href="normalise-data.html"><i class="fa fa-check"></i><b>4.4</b> Normalise data</a></li>
+<li class="chapter" data-level="4.5" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>4.5</b> Export data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-manipulation-extracting-and-exporting-records.html"><a href="data-manipulation-extracting-and-exporting-records.html"><i class="fa fa-check"></i><b>5</b> Data manipulation - extracting and exporting records</a><ul>
+<li class="chapter" data-level="5.1" data-path="extracting-records.html"><a href="extracting-records.html"><i class="fa fa-check"></i><b>5.1</b> Extracting records</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="extracting-records.html"><a href="extracting-records.html#removing-samples"><i class="fa fa-check"></i><b>5.1.1</b> Removing samples</a></li>
+<li class="chapter" data-level="5.1.2" data-path="extracting-records.html"><a href="extracting-records.html#remove-uninformative-measurements"><i class="fa fa-check"></i><b>5.1.2</b> Remove uninformative measurements</a></li>
+<li class="chapter" data-level="5.1.3" data-path="extracting-records.html"><a href="extracting-records.html#extracting-specific-measurements"><i class="fa fa-check"></i><b>5.1.3</b> Extracting specific measurements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="an-alternative-practice-data-set.html"><a href="an-alternative-practice-data-set.html"><i class="fa fa-check"></i><b>5.2</b> An alternative practice data set</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html"><i class="fa fa-check"></i><b>6</b> Integrating and summarising datasets</a><ul>
+<li class="chapter" data-level="6.1" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html"><i class="fa fa-check"></i><b>6.1</b> Integrating multiple datasets</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#combining-two-files-with-identical-row-identifiers"><i class="fa fa-check"></i><b>6.1.1</b> Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="6.1.2" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#combining-two-files-with-rows-in-common"><i class="fa fa-check"></i><b>6.1.2</b> Combining two files with rows in common</a></li>
+<li class="chapter" data-level="6.1.3" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#linking-in-reference-data"><i class="fa fa-check"></i><b>6.1.3</b> Linking in reference data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="summarising-data.html"><a href="summarising-data.html"><i class="fa fa-check"></i><b>6.2</b> Summarising data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="summarising-data.html"><a href="summarising-data.html#the-summary-function"><i class="fa fa-check"></i><b>6.2.1</b> The summary function</a></li>
+<li class="chapter" data-level="6.2.2" data-path="summarising-data.html"><a href="summarising-data.html#table-summaries"><i class="fa fa-check"></i><b>6.2.2</b> Table summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="charts-and-graphical-output.html"><a href="charts-and-graphical-output.html"><i class="fa fa-check"></i><b>7</b> Charts and graphical output</a><ul>
+<li class="chapter" data-level="7.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html"><i class="fa fa-check"></i><b>7.1</b> Standard R plotting functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#heatmaps"><i class="fa fa-check"></i><b>7.1.2</b> Heatmaps</a></li>
+<li class="chapter" data-level="7.1.3" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#pca-plots"><i class="fa fa-check"></i><b>7.1.3</b> PCA plots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="generating-report-with-r.html"><a href="generating-report-with-r.html"><i class="fa fa-check"></i><b>8</b> Generating report with R</a><ul>
+<li class="chapter" data-level="8.1" data-path="other-reporting-formats.html"><a href="other-reporting-formats.html"><i class="fa fa-check"></i><b>8.1</b> Other reporting formats</a></li>
+<li class="chapter" data-level="8.2" data-path="interactive-reporting-with-shiny.html"><a href="interactive-reporting-with-shiny.html"><i class="fa fa-check"></i><b>8.2</b> Interactive reporting with Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="appendix-exercise-answers.html"><a href="appendix-exercise-answers.html"><i class="fa fa-check"></i>Appendix: Exercise answers</a><ul>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html"><i class="fa fa-check"></i>4 Importing and reformatting data files</a><ul>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#read-in-the-datafile"><i class="fa fa-check"></i>4.1 Read in the datafile</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#reformat-the-file-1"><i class="fa fa-check"></i>4.2 Reformat the file</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#transform-data-1"><i class="fa fa-check"></i>4.3 Transform data</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#normalise-data-1"><i class="fa fa-check"></i>4.4 Normalise data</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#export-data-1"><i class="fa fa-check"></i>4.5 Export data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i>5.1 Data manipulation</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#removing-samples-1"><i class="fa fa-check"></i>5.1.2 Removing samples</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#remove-uninformative-measurements-1"><i class="fa fa-check"></i>5.1.2 Remove uninformative measurements</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#extracting-specific-measurements-1"><i class="fa fa-check"></i>5.1.3 Extracting specific measurements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="an-alternative-practice-data-set-1.html"><a href="an-alternative-practice-data-set-1.html"><i class="fa fa-check"></i>5.2 An alternative practice data set</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html"><i class="fa fa-check"></i>6 Integrating and summarising datasets</a><ul>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#combining-two-files-with-identical-row-identifiers-1"><i class="fa fa-check"></i>6.1.1 Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#combining-two-files-with-rows-in-common-1"><i class="fa fa-check"></i>6.1.2 Combining two files with rows in common</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#linking-in-reference-data-1"><i class="fa fa-check"></i>6.1.3 Linking in reference data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="summarising-data-1.html"><a href="summarising-data-1.html"><i class="fa fa-check"></i>6.2 Summarising data</a><ul>
+<li class="chapter" data-level="" data-path="summarising-data-1.html"><a href="summarising-data-1.html#table-summaries-1"><i class="fa fa-check"></i>6.2.1 Table summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html"><i class="fa fa-check"></i>7 Charts and graphical output</a><ul>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#plot-1"><i class="fa fa-check"></i>7.1.1 Plot</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#further-timecourse-plotting-practice"><i class="fa fa-check"></i>7.1.2 Further timecourse plotting practice</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#heatmaps-1"><i class="fa fa-check"></i>7.1.3 Heatmaps</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#pca-plots-1"><i class="fa fa-check"></i>7.1.4 PCA plots</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i>7.2 ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix-sessioninfo-for-this-version-of-the-course-material.html"><a href="appendix-sessioninfo-for-this-version-of-the-course-material.html"><i class="fa fa-check"></i>Appendix - SessionInfo for this version of the course material</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data preparation, processing and interpretation with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="standard-r-plotting-functions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Standard R plotting functions</h2>
+<div id="plot" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Plot</h3>
+<p>We have already come across the plot function when producing scatterplots earlier in the workshop, but <code>plot()</code> can be used for several other applications. These include line graphs (showing, for example, changes over time) and volcano plots (for gene expression analysis). Let’s revisit this using our beaver temperature dataset, and preparing a scatterplot of our time-merged data.</p>
+<div class="rmdexercise">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+Make a scatterplot comparing body temperature of the two beavers from our merged dataframe
+</p>
+</li>
+<li>
+<p>
+Review the <code>plot</code> and <code>plot.default</code> documentation to add a <strong>title</strong> to the plot
+</p>
+</li>
+<li>
+<p>
+By default, the axis names are probably not what we want. See if you can replace them with <code>Beaver 1</code> and <code>Beaver 2</code>.
+</p>
+</li>
+<li>
+<p>
+Try changing the plot symbols, and maybe adding a trend line.
+</p>
+</li>
+</ol>
+</div>
+<p>This gives us a correlation, but does not show how data changes over time. For this we need a different type of plot, either <code>type = &quot;l&quot;</code> or <code>type = &quot;o&quot;</code>. The former gives a line plot, the latter an ’overplot’ (points connected by lines). Drawing this plot is a little more involved, since we need to plot the two datasets separately, both scaled against time.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Before we start anything we need to know the maximum range required for</span>
+<span class="co"># the axes. By default, when we plot the graph, it will scale for the first</span>
+<span class="co"># animal, but adding others may go outside the display range</span>
+temp.range &lt;-<span class="st"> </span><span class="kw">range</span>(beaver.temp$temp.x, beaver.temp$temp.y, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Set up the plot for the first animal</span>
+<span class="co"># In this case, we&#39;ll define the axis labels at the outset</span>
+<span class="co"># xaxt = &#39;n&#39; means not to give the x-axis scale - we&#39;ll add that in a moment</span>
+<span class="kw">plot</span>(beaver.temp$temp.x, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,
+     <span class="dt">ylim =</span> temp.range, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Temp&quot;</span>)
+
+<span class="co"># Now add the second animal data</span>
+<span class="kw">lines</span>(beaver.temp$temp.y, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="co">#Put some time-points on the x-axis. This command puts 19 time points, on the hour</span>
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="dv">3+6</span>*<span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">19</span>), <span class="dt">lab =</span> beaver.temp$time[<span class="dv">3+6</span>*<span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">19</span>)])
+
+<span class="co"># Finally, give it a title</span>
+<span class="kw">title</span>(<span class="dt">main=</span><span class="st">&quot;Diurnal temperature variation&quot;</span>)</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="rmdexercise">
+<p>
+<strong>Further timecourse plotting practice</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>
+Using another built-in R dataset <code>Indometh</code> , plot time course changes for two or more of the six samples
+</p>
+</li>
+<li>
+<p>
+Give each sample a different colour
+</p>
+</li>
+<li>
+<p>
+Try to label and scale the axes appropriately
+</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="heatmaps" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Heatmaps</h3>
+<p>Another commonly used way of displaying biological datasets is the heatmap. This is commonly used for gene expression analysis, but it can be used for any dataset where multiple quantitative measurements are carried out on several samples. Not only can an R-generated heatmap help in the visualisation of these sort of datasets, but the heatmap command can also be used to automatically organise samples and/or measurements into dendrograms, showing the similarity relationship between them.</p>
+<p>For a first example, let’s plot a heatmap for our 100 key Golub dataset genes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the simplest heatmap, with all default settings</span>
+<span class="kw">heatmap</span>(golub<span class="fl">.100</span>)</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This works reasonably well, but conventianally expression heatmaps</span>
+<span class="co"># are in red/green scale</span>
+<span class="co"># We can load a pre-defined colour palette from the &#39;gplots&#39; package</span>
+<span class="kw">library</span>(gplots)
+<span class="kw">heatmap</span>(golub<span class="fl">.100</span>, <span class="dt">col =</span> <span class="kw">redgreen</span>(<span class="dv">100</span>))</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
+<p>By default, this actually gives a very presentable plot. Both rows and columns are automatically sorted to cluster most alike genes and samples together, and dendrograms are plotted for us automatically. Encouragingly, we can see that all the <span class="math inline">\(AML\)</span> and <span class="math inline">\(ALL\)</span> samples form two separate clusters. It might look better without the crowded gene names column, but that can be turned off easily with the setting <code>labRow = NA</code>.</p>
+<div class="rmdexercise">
+<p>
+For more practice, see if you can prepare a heat plot of the Indometh dataset:
+</p>
+<ul>
+<li>
+<em>Hints</em>:
+<ul>
+<li>
+you will need to convert the dataset into a matrix with one column per <span class="math inline"><em>S</em><em>u</em><em>b</em><em>j</em><em>e</em><em>c</em><em>t</em></span>. Set column names as Subject number and rownames as timepoints
+</li>
+<li>
+review the Rowv setting to keep time points in order in the dendrogram
+</li>
+<li>
+think about transforming the data to compensate for the exponential decrease of the concentration value
+</li>
+<li>
+apply a more attractive colour scheme ( <code>?redgreen</code> )
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="pca-plots" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> PCA plots</h3>
+<p>The final plotting option we will explore is principle component analysis, or PCA. PCA is often used where there are two or more categories of data, and multiple quantitative measurements on each, to quickly review whether the difference between the categories outweighs any noise or batch effect signals. Essentially, PCA collapses the dataset down to a small number of representative dimensions which can be plotted on a chart.</p>
+<p>PCA analysis is widely used in expression datasets, which have large numbers of measurements (one per gene), multiple replicates, and normally two or more categorical conditions, so we will test it with our Golub dataset</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We will use the PCA function of the &#39;mixOmics&#39; package</span>
+<span class="kw">library</span>(mixOmics)
+
+<span class="co"># Carry out the PCA on just the top 100 genes, with default parameters</span>
+<span class="co"># N.B. PCA data needs to have the samples in rows. Our data is by</span>
+<span class="co"># columns, so we need to transpose it</span>
+golub<span class="fl">.100</span>.pca &lt;-<span class="st"> </span><span class="kw">pca</span>(<span class="kw">t</span>(golub<span class="fl">.100</span>))
+
+<span class="co"># Then plot the data for the first two components, colouring the</span>
+<span class="co"># sample names for clarity</span>
+<span class="kw">plotIndiv</span>(golub<span class="fl">.100</span>.pca, <span class="dt">comp =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),
+          <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;red&#39;</span>, <span class="dv">27</span>), <span class="kw">rep</span>(<span class="st">&#39;blue&#39;</span>, <span class="dv">11</span>)))</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="rmdexercise">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+Generate a PCA plot for other components of the analysis
+</p>
+</li>
+<li>
+<p>
+Carry out a PCA analysis for the full (normalised, transformed) Golub dataset and generate a plot
+</p>
+</li>
+<li>
+<p>
+Does the data differentiate between the two sample types?
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="charts-and-graphical-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["data-proc-qc-inter.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

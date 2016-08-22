@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data preparation, processing and interpretation with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R">
+  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data preparation, processing and interpretation with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data preparation, processing and interpretation with R" />
+  
+  <meta name="twitter:description" content="This is the complementary manual for QFAB’s Data preparation, processing and interpretation with R" />
+  
+
+<meta name="author" content="QFAB">
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="appendix-exercise-answers.html">
+<link rel="next" href="data-manipulation.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data processing, quality checking & interpretation with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i><b>1.1</b> How to read this book</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1.2</b> Getting started</a></li>
+<li class="chapter" data-level="1.3" data-path="a-quick-refresher.html"><a href="a-quick-refresher.html"><i class="fa fa-check"></i><b>1.3</b> A quick refresher</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i><b>2</b> Data Preparation</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-lifecycle-management-plan.html"><a href="data-lifecycle-management-plan.html"><i class="fa fa-check"></i><b>2.1</b> Data Lifecycle &amp; Management Plan</a></li>
+<li class="chapter" data-level="2.2" data-path="good-data-protocol.html"><a href="good-data-protocol.html"><i class="fa fa-check"></i><b>2.2</b> Good Data Protocol</a></li>
+<li class="chapter" data-level="2.3" data-path="further-reading.html"><a href="further-reading.html"><i class="fa fa-check"></i><b>2.3</b> Further Reading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="reproducible-reporting-in-r.html"><a href="reproducible-reporting-in-r.html"><i class="fa fa-check"></i><b>3</b> Reproducible reporting in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="literate-programming.html"><a href="literate-programming.html"><i class="fa fa-check"></i><b>3.1</b> Literate programming</a></li>
+<li class="chapter" data-level="3.2" data-path="open-a-new-knitr-document.html"><a href="open-a-new-knitr-document.html"><i class="fa fa-check"></i><b>3.2</b> Open a new knitR document</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-and-reformatting-data-files.html"><a href="importing-and-reformatting-data-files.html"><i class="fa fa-check"></i><b>4</b> Importing and reformatting data files</a><ul>
+<li class="chapter" data-level="4.1" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>4.1</b> Importing data</a></li>
+<li class="chapter" data-level="4.2" data-path="reformat-the-file.html"><a href="reformat-the-file.html"><i class="fa fa-check"></i><b>4.2</b> Reformat the file</a></li>
+<li class="chapter" data-level="4.3" data-path="transform-data.html"><a href="transform-data.html"><i class="fa fa-check"></i><b>4.3</b> Transform data</a></li>
+<li class="chapter" data-level="4.4" data-path="normalise-data.html"><a href="normalise-data.html"><i class="fa fa-check"></i><b>4.4</b> Normalise data</a></li>
+<li class="chapter" data-level="4.5" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>4.5</b> Export data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-manipulation-extracting-and-exporting-records.html"><a href="data-manipulation-extracting-and-exporting-records.html"><i class="fa fa-check"></i><b>5</b> Data manipulation - extracting and exporting records</a><ul>
+<li class="chapter" data-level="5.1" data-path="extracting-records.html"><a href="extracting-records.html"><i class="fa fa-check"></i><b>5.1</b> Extracting records</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="extracting-records.html"><a href="extracting-records.html#removing-samples"><i class="fa fa-check"></i><b>5.1.1</b> Removing samples</a></li>
+<li class="chapter" data-level="5.1.2" data-path="extracting-records.html"><a href="extracting-records.html#remove-uninformative-measurements"><i class="fa fa-check"></i><b>5.1.2</b> Remove uninformative measurements</a></li>
+<li class="chapter" data-level="5.1.3" data-path="extracting-records.html"><a href="extracting-records.html#extracting-specific-measurements"><i class="fa fa-check"></i><b>5.1.3</b> Extracting specific measurements</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="an-alternative-practice-data-set.html"><a href="an-alternative-practice-data-set.html"><i class="fa fa-check"></i><b>5.2</b> An alternative practice data set</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html"><i class="fa fa-check"></i><b>6</b> Integrating and summarising datasets</a><ul>
+<li class="chapter" data-level="6.1" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html"><i class="fa fa-check"></i><b>6.1</b> Integrating multiple datasets</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#combining-two-files-with-identical-row-identifiers"><i class="fa fa-check"></i><b>6.1.1</b> Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="6.1.2" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#combining-two-files-with-rows-in-common"><i class="fa fa-check"></i><b>6.1.2</b> Combining two files with rows in common</a></li>
+<li class="chapter" data-level="6.1.3" data-path="integrating-multiple-datasets.html"><a href="integrating-multiple-datasets.html#linking-in-reference-data"><i class="fa fa-check"></i><b>6.1.3</b> Linking in reference data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="summarising-data.html"><a href="summarising-data.html"><i class="fa fa-check"></i><b>6.2</b> Summarising data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="summarising-data.html"><a href="summarising-data.html#the-summary-function"><i class="fa fa-check"></i><b>6.2.1</b> The summary function</a></li>
+<li class="chapter" data-level="6.2.2" data-path="summarising-data.html"><a href="summarising-data.html#table-summaries"><i class="fa fa-check"></i><b>6.2.2</b> Table summaries</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="charts-and-graphical-output.html"><a href="charts-and-graphical-output.html"><i class="fa fa-check"></i><b>7</b> Charts and graphical output</a><ul>
+<li class="chapter" data-level="7.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html"><i class="fa fa-check"></i><b>7.1</b> Standard R plotting functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> Plot</a></li>
+<li class="chapter" data-level="7.1.2" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#heatmaps"><i class="fa fa-check"></i><b>7.1.2</b> Heatmaps</a></li>
+<li class="chapter" data-level="7.1.3" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#pca-plots"><i class="fa fa-check"></i><b>7.1.3</b> PCA plots</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="generating-report-with-r.html"><a href="generating-report-with-r.html"><i class="fa fa-check"></i><b>8</b> Generating report with R</a><ul>
+<li class="chapter" data-level="8.1" data-path="other-reporting-formats.html"><a href="other-reporting-formats.html"><i class="fa fa-check"></i><b>8.1</b> Other reporting formats</a></li>
+<li class="chapter" data-level="8.2" data-path="interactive-reporting-with-shiny.html"><a href="interactive-reporting-with-shiny.html"><i class="fa fa-check"></i><b>8.2</b> Interactive reporting with Shiny</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="appendix-exercise-answers.html"><a href="appendix-exercise-answers.html"><i class="fa fa-check"></i>Appendix: Exercise answers</a><ul>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html"><i class="fa fa-check"></i>4 Importing and reformatting data files</a><ul>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#read-in-the-datafile"><i class="fa fa-check"></i>4.1 Read in the datafile</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#reformat-the-file-1"><i class="fa fa-check"></i>4.2 Reformat the file</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#transform-data-1"><i class="fa fa-check"></i>4.3 Transform data</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#normalise-data-1"><i class="fa fa-check"></i>4.4 Normalise data</a></li>
+<li class="chapter" data-level="" data-path="importing-and-reformatting-data-files-1.html"><a href="importing-and-reformatting-data-files-1.html#export-data-1"><i class="fa fa-check"></i>4.5 Export data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i>5.1 Data manipulation</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#removing-samples-1"><i class="fa fa-check"></i>5.1.2 Removing samples</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#remove-uninformative-measurements-1"><i class="fa fa-check"></i>5.1.2 Remove uninformative measurements</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#extracting-specific-measurements-1"><i class="fa fa-check"></i>5.1.3 Extracting specific measurements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="an-alternative-practice-data-set-1.html"><a href="an-alternative-practice-data-set-1.html"><i class="fa fa-check"></i>5.2 An alternative practice data set</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html"><i class="fa fa-check"></i>6 Integrating and summarising datasets</a><ul>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#combining-two-files-with-identical-row-identifiers-1"><i class="fa fa-check"></i>6.1.1 Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#combining-two-files-with-rows-in-common-1"><i class="fa fa-check"></i>6.1.2 Combining two files with rows in common</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets-1.html"><a href="integrating-and-summarising-datasets-1.html#linking-in-reference-data-1"><i class="fa fa-check"></i>6.1.3 Linking in reference data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="summarising-data-1.html"><a href="summarising-data-1.html"><i class="fa fa-check"></i>6.2 Summarising data</a><ul>
+<li class="chapter" data-level="" data-path="summarising-data-1.html"><a href="summarising-data-1.html#table-summaries-1"><i class="fa fa-check"></i>6.2.1 Table summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html"><i class="fa fa-check"></i>7 Charts and graphical output</a><ul>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#plot-1"><i class="fa fa-check"></i>7.1.1 Plot</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#further-timecourse-plotting-practice"><i class="fa fa-check"></i>7.1.2 Further timecourse plotting practice</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#heatmaps-1"><i class="fa fa-check"></i>7.1.3 Heatmaps</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#pca-plots-1"><i class="fa fa-check"></i>7.1.4 PCA plots</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i>7.2 ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix-sessioninfo-for-this-version-of-the-course-material.html"><a href="appendix-sessioninfo-for-this-version-of-the-course-material.html"><i class="fa fa-check"></i>Appendix - SessionInfo for this version of the course material</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data preparation, processing and interpretation with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="importing-and-reformatting-data-files-1" class="section level2 unnumbered">
+<h2>4 Importing and reformatting data files</h2>
+<div id="read-in-the-datafile" class="section level3 unnumbered">
+<h3>4.1 Read in the datafile</h3>
+<pre><code>## [1] &quot;Gene Description\tGene Accession Number\t1\tcall\t2\tcall\t3\tcall\t4\tcall\t5\tcall\t6\tcall\t7\tcall\t8\tcall\t9\tcall\t10\tcall\t11\tcall\t12\tcall\t13\tcall\t14\tcall\t15\tcall\t16\tcall\t17\tcall\t18\tcall\t19\tcall\t20\tcall\t21\tcall\t22\tcall\t23\tcall\t24\tcall\t25\tcall\t26\tcall\t27\tcall\t34\tcall\t35\tcall\t36\tcall\t37\tcall\t38\tcall\t28\tcall\t29\tcall\t30\tcall\t31\tcall\t32\tcall\t33\tcall&quot;
+## [2] &quot;AFFX-BioB-5_at (endogenous control)\tAFFX-BioB-5_at\t-214\tA\t-139\tA\t-76\tA\t-135\tA\t-106\tA\t-138\tA\t-72\tA\t-413\tA\t5\tA\t-88\tA\t-165\tA\t-67\tA\t-92\tA\t-113\tA\t-107\tA\t-117\tA\t-476\tA\t-81\tA\t-44\tA\t17\tA\t-144\tA\t-247\tA\t-74\tA\t-120\tA\t-81\tA\t-112\tA\t-273\tA\t-20\tA\t7\tA\t-213\tA\t-25\tA\t-72\tA\t-4\tA\t15\tA\t-318\tA\t-32\tA\t-124\tA\t-135\tA&quot;                                          
+## [3] &quot;AFFX-BioB-M_at (endogenous control)\tAFFX-BioB-M_at\t-153\tA\t-73\tA\t-49\tA\t-114\tA\t-125\tA\t-85\tA\t-144\tA\t-260\tA\t-127\tA\t-105\tA\t-155\tA\t-93\tA\t-119\tA\t-147\tA\t-72\tA\t-219\tA\t-213\tA\t-150\tA\t-51\tA\t-229\tA\t-199\tA\t-90\tA\t-321\tA\t-263\tA\t-150\tA\t-233\tA\t-327\tA\t-207\tA\t-100\tA\t-252\tA\t-20\tA\t-139\tA\t-116\tA\t-114\tA\t-192\tA\t-49\tA\t-79\tA\t-186\tA&quot;                           
+## [4] &quot;AFFX-BioB-3_at (endogenous control)\tAFFX-BioB-3_at\t-58\tA\t-1\tA\t-307\tA\t265\tA\t-76\tA\t215\tA\t238\tA\t7\tA\t106\tA\t42\tA\t-71\tA\t84\tA\t-31\tA\t-118\tA\t-126\tA\t-50\tA\t-18\tA\t-119\tA\t100\tA\t79\tA\t-157\tA\t-168\tA\t-11\tA\t-114\tA\t-85\tA\t-78\tA\t-76\tA\t-50\tA\t-57\tA\t136\tA\t124\tA\t-1\tA\t-125\tA\t2\tA\t-95\tA\t49\tA\t-37\tA\t-70\tA&quot;                                                         
+## [5] &quot;AFFX-BioC-5_at (endogenous control)\tAFFX-BioC-5_at\t88\tA\t283\tA\t309\tA\t12\tA\t168\tA\t71\tA\t55\tA\t-2\tA\t268\tA\t219\tM\t82\tA\t25\tA\t173\tA\t243\tM\t149\tA\t257\tA\t301\tA\t78\tA\t207\tA\t218\tA\t132\tA\t-24\tA\t-36\tA\t255\tA\t316\tA\t54\tA\t81\tA\t101\tA\t132\tA\t318\tA\t325\tA\t392\tP\t241\tA\t193\tA\t312\tA\t230\tP\t330\tA\t337\tA&quot;                                                                 
+## [6] &quot;AFFX-BioC-3_at (endogenous control)\tAFFX-BioC-3_at\t-295\tA\t-264\tA\t-376\tA\t-419\tA\t-230\tA\t-272\tA\t-399\tA\t-541\tA\t-210\tA\t-178\tA\t-163\tA\t-179\tA\t-233\tA\t-127\tA\t-205\tA\t-218\tA\t-403\tA\t-152\tA\t-146\tA\t-262\tA\t-151\tA\t-308\tA\t-317\tA\t-342\tA\t-418\tA\t-244\tA\t-439\tA\t-369\tA\t-377\tA\t-209\tA\t-396\tA\t-324\tA\t-191\tA\t-51\tA\t-139\tA\t-367\tA\t-188\tA\t-407\tA&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let&#39;s set up a few shortcuts first</span>
+DATADIR &lt;-<span class="st"> &quot;~/data/Data_interpretation_with_R&quot;</span>
+Golub.file &lt;-<span class="st"> </span><span class="kw">file.path</span>(DATADIR, <span class="st">&quot;data_set_ALL_AML_train.tsv&quot;</span>)
+
+<span class="co"># Inspect the file content</span>
+<span class="kw">head</span>(<span class="kw">readLines</span>(Golub.file))
+
+<span class="co"># Read the file into the golub.df dataframe</span>
+golub.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(Golub.file,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">quote=</span><span class="st">&quot;&quot;</span>, <span class="dt">header=</span>T,
+                       <span class="dt">row.names=</span><span class="dv">2</span>, <span class="dt">comment.char=</span><span class="st">&quot;&quot;</span>,
+                       <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+</div>
+<div id="reformat-the-file-1" class="section level3 unnumbered">
+<h3>4.2 Reformat the file</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a golub matrix containing just the intensity values</span>
+<span class="co"># 2*[1:38] returns even numbers from 2 to 2x38 (i.e. 76)</span>
+golub.matrix &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(golub.df[,<span class="dv">2</span>*(<span class="dv">1</span>:<span class="dv">38</span>)])
+
+<span class="co"># Name the columns with the sample status</span>
+<span class="co"># The first 27 are &quot;ALL&quot;, the final 11 are &quot;AML&quot;</span>
+<span class="kw">colnames</span>(golub.matrix) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;ALL&quot;</span>,<span class="dv">27</span>),<span class="kw">rep</span>(<span class="st">&quot;AML&quot;</span>,<span class="dv">11</span>))
+
+<span class="co"># Then create a vector of gene names</span>
+golub.gnames &lt;-<span class="st"> </span>golub.df$Gene.Description
+<span class="co"># or golub.gnames &lt;- golub.df[,1]</span>
+<span class="kw">names</span>(golub.gnames) &lt;-<span class="st"> </span><span class="kw">rownames</span>(golub.df)</code></pre></div>
+</div>
+<div id="transform-data-1" class="section level3 unnumbered">
+<h3>4.3 Transform data</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Find the positions of values in golub below our floor or above our ceiling.</span>
+<span class="co"># Then replace the values in those positions by our floor or ceiling value.</span>
+golub.matrix[golub.matrix &lt;<span class="st"> </span><span class="dv">100</span>] &lt;-<span class="st"> </span><span class="dv">100</span>
+golub.matrix[golub.matrix &gt;<span class="st"> </span><span class="dv">16000</span>] &lt;-<span class="st"> </span><span class="dv">16000</span>
+
+<span class="co"># Log_10 transformation</span>
+golub.log &lt;-<span class="st"> </span><span class="kw">log</span>(golub.matrix,<span class="dv">10</span>)</code></pre></div>
+</div>
+<div id="normalise-data-1" class="section level3 unnumbered">
+<h3>4.4 Normalise data</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Check the existing mean and standard deviation</span>
+<span class="kw">apply</span>(golub.log, <span class="dv">2</span>, mean)</code></pre></div>
+<pre><code>##      ALL      ALL      ALL      ALL      ALL      ALL      ALL      ALL 
+## 2.412221 2.393360 2.441669 2.391413 2.390291 2.341846 2.384387 2.399676 
+##      ALL      ALL      ALL      ALL      ALL      ALL      ALL      ALL 
+## 2.444495 2.338539 2.363399 2.274308 2.386571 2.388623 2.395650 2.380295 
+##      ALL      ALL      ALL      ALL      ALL      ALL      ALL      ALL 
+## 2.482811 2.324345 2.328069 2.499497 2.306725 2.313102 2.331595 2.409902 
+##      ALL      ALL      ALL      AML      AML      AML      AML      AML 
+## 2.343512 2.352611 2.360633 2.382545 2.336199 2.427405 2.401558 2.386542 
+##      AML      AML      AML      AML      AML      AML 
+## 2.406045 2.296222 2.400678 2.361889 2.418098 2.451635</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(golub.log, <span class="dv">2</span>, sd)</code></pre></div>
+<pre><code>##       ALL       ALL       ALL       ALL       ALL       ALL       ALL 
+## 0.5071723 0.5187630 0.5263826 0.4988002 0.5032199 0.4792356 0.4942427 
+##       ALL       ALL       ALL       ALL       ALL       ALL       ALL 
+## 0.5020369 0.5447880 0.4846996 0.4989016 0.4477448 0.5113511 0.5011462 
+##       ALL       ALL       ALL       ALL       ALL       ALL       ALL 
+## 0.5190887 0.4920936 0.5537143 0.4649320 0.4727689 0.5794321 0.4687063 
+##       ALL       ALL       ALL       ALL       ALL       ALL       AML 
+## 0.4640572 0.4649017 0.5043298 0.4843511 0.4877606 0.4773038 0.5001143 
+##       AML       AML       AML       AML       AML       AML       AML 
+## 0.4653518 0.5418554 0.5233421 0.5008276 0.5119954 0.4655509 0.5325124 
+##       AML       AML       AML 
+## 0.5000293 0.5186136 0.5380754</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make average log value for each column equal to zero, then divide all</span>
+<span class="co"># values by the standard deviation</span>
+golub.norm &lt;-<span class="st"> </span><span class="kw">scale</span>(golub.log, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Now recheck means and standard deviations</span>
+<span class="kw">apply</span>(golub.norm, <span class="dv">2</span>, mean)</code></pre></div>
+<pre><code>##           ALL           ALL           ALL           ALL           ALL 
+## -1.986263e-17 -5.360228e-17  2.814013e-16  9.856386e-17 -4.490310e-16 
+##           ALL           ALL           ALL           ALL           ALL 
+## -3.114529e-16 -1.577204e-16  3.022949e-16  3.314441e-16  2.359088e-16 
+##           ALL           ALL           ALL           ALL           ALL 
+## -3.865295e-16  5.235524e-17  3.505657e-16  1.426972e-16  1.317842e-16 
+##           ALL           ALL           ALL           ALL           ALL 
+## -1.581130e-16  3.095132e-16 -9.346855e-17  4.140777e-16 -3.024501e-16 
+##           ALL           ALL           ALL           ALL           ALL 
+##  2.738962e-16 -9.476412e-17  4.037920e-16  6.162612e-17 -4.122564e-16 
+##           ALL           ALL           AML           AML           AML 
+## -3.695595e-16 -2.939020e-16  6.263294e-17  3.219093e-16  2.935077e-16 
+##           AML           AML           AML           AML           AML 
+## -3.169440e-16 -2.172312e-16 -1.518818e-16  2.158345e-16  3.435190e-16 
+##           AML           AML           AML 
+##  2.039186e-17 -1.589449e-16 -7.778114e-17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(golub.norm, <span class="dv">2</span>, sd)</code></pre></div>
+<pre><code>## ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL ALL 
+##   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+## ALL ALL ALL ALL ALL ALL ALL ALL ALL AML AML AML AML AML AML AML AML AML 
+##   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+## AML AML 
+##   1   1</code></pre>
+</div>
+<div id="export-data-1" class="section level3 unnumbered">
+<h3>4.5 Export data</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Export a csv version of the matrix</span>
+<span class="kw">write.table</span>(golub.norm, <span class="dt">file=</span><span class="st">&quot;golub_normalised_data.csv&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>)
+<span class="co"># OR</span>
+<span class="kw">write.csv</span>(golub.norm, <span class="dt">file=</span><span class="st">&quot;golub_normalised_data.csv&quot;</span>)
+<span class="co"># And of the gene name conversion table</span>
+<span class="kw">write.table</span>(golub.gnames, <span class="dt">file=</span><span class="st">&quot;golub_gene_names.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">quote=</span><span class="ot">TRUE</span>)</code></pre></div>
+<ul>
+<li><p>Save the knitR document by just clicking on the disk icon at the top of the knitR markdown document. This may be greyed out if you have just created HTML, since knitR saves the file automatically before running.</p></li>
+<li><p>Save your workspace by going to the Session menu at the top of the RStudio window, and selecting “Save Workspace As”</p></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="appendix-exercise-answers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-manipulation.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["data-proc-qc-inter.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
