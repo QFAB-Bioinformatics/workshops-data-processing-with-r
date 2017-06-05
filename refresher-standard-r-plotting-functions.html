@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="literate-programming.html">
-<link rel="next" href="importing-and-reformatting-data-files.html">
+<link rel="prev" href="charts-and-graphical-output.html">
+<link rel="next" href="ggplot2.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,60 +198,186 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="open-a-new-knitr-document" class="section level2">
-<h2><span class="header-section-number">3.2</span> Open a new knitR document</h2>
+<div id="refresher---standard-r-plotting-functions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Refresher - standard R plotting functions</h2>
+<div id="plot-function" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Plot() function</h3>
+<p><code>plot()</code> can be used for several other applications. These include line graphs (showing, for example, changes over time) and volcano plots (for gene expression analysis). Let’s revisit this using our beaver temperature dataset, and preparing a scatterplot of our time-merged data.</p>
 <div class="rmdexercise">
 <ol style="list-style-type: decimal">
 <li>
 <p>
-Under the RStudio <strong>File</strong> menu, select <strong>New File</strong> &gt; <strong>R Notebook</strong>.
+Make a scatterplot comparing body temperature of the two beavers from our merged data.frame.
 </p>
 </li>
 <li>
 <p>
-In the first line next to <strong>Title</strong>, replace the <em>“R Notebook”</em> with an appropriate title.
+Review the <code>plot</code> documentation to add the following:
 </p>
+<ul>
+<li>
+a <strong>title</strong> to the plot,
 </li>
 <li>
-<p>
-Save the file.
-</p>
+replace the axis names with <code>Beaver 1</code> and <code>Beaver 2</code>
 </li>
 <li>
-<p>
-If you are not already familiar with the knitR Markdown syntax, click on <strong>Help</strong> &gt; <strong>Markdown Quick Reference</strong>.
-</p>
+change the plot symbols
 </li>
 <li>
-<p>
-Once you have made some changes, save it using the disk icon, then click on the <strong>Preview</strong> button to generate and preview your HTML report. As we are using an Rstudio version, a window may pop up, click on <strong>Try again</strong> to enable the preview window to appear. Alternatively, if you click on the little arrow next to the Preview button, you can choose to what format you want to knit (render) your notebook: PDF, HTML or even WORD.
-</p>
+add a trend line
 </li>
-</ol>
-<p>
-<strong>Tip</strong>: to turn of preivew mode but still knit your document, click on the <strong>cogwheel</strong> &gt; <strong>(No Preview)</strong>
-</p>
-<ol start="6" style="list-style-type: decimal">
-<li>
-Try some of the Markdown syntax shown in the <em>Markdown Quick Reference</em>.
+</ul>
 </li>
 </ol>
 </div>
+<p>This gives us a correlation, but does not show how data changes over time. For this we need a different type of plot, either <code>type = &quot;l&quot;</code>, which gives a line plot; or <code>type = &quot;o&quot;</code>, which standard for <code>overplot</code> and gives points connected by lines. Drawing this plot is a little more involved, since we need to plot the two datasets separately, both scaled against time.</p>
+<p>Before we start anything we need to know the maximum range required for the axes. By default, when we plot the graph, it will scale for the first animal, but adding others may go outside the display range</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp.range &lt;-<span class="st"> </span><span class="kw">range</span>(beaver.temp$temp.x, beaver.temp$temp.y, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Set up the plot for the first animal</span>
+<span class="co"># In this case, we&#39;ll define the axis labels at the outset</span>
+<span class="co"># xaxt = &#39;n&#39; means not to give the x-axis scale - we&#39;ll add that in a moment</span>
+<span class="kw">plot</span>(beaver.temp$temp.x, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,
+     <span class="dt">ylim =</span> temp.range, <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Temp&quot;</span>)
+
+<span class="co"># Now add the second animal data</span>
+<span class="kw">lines</span>(beaver.temp$temp.y, <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="dv">3+6</span>*<span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">19</span>), <span class="dt">lab =</span> beaver.temp$time[<span class="dv">3+6</span>*<span class="kw">c</span>(<span class="dv">0</span>:<span class="dv">19</span>)])
+<span class="kw">title</span>(<span class="dt">main=</span><span class="st">&quot;Diurnal temperature variation&quot;</span>)</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="rmdexercise">
+<p>
+<em>(Optional)</em>
+</p>
+<p>
+<strong>Further timecourse plotting practice</strong>
+</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>
+Using another built-in R dataset <code>Indometh</code>, examine the dataset and plot time course changes for two or more of the six samples.
+</p>
+</li>
+<li>
+<p>
+Give each sample a different colour.
+</p>
+</li>
+<li>
+<p>
+Try to label and scale the axes appropriately.
+</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="boxplots" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Boxplots</h3>
+<p>Let’s plot our microarray data from the previous exercise side by side to show the unnormalised data alongside the normalised dataset. The red squares on each boxplot shows the location of the mean value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+means &lt;-<span class="st"> </span><span class="kw">colMeans</span>(golub.log)
+<span class="kw">boxplot</span>(golub.log[,<span class="dv">1</span>:<span class="dv">15</span>],<span class="dt">las=</span><span class="dv">2</span>,<span class="dt">main=</span><span class="st">&quot;Log10 transformed&quot;</span>)
+<span class="kw">points</span>(<span class="dv">1</span>:<span class="dv">15</span>, means[<span class="dv">1</span>:<span class="dv">15</span>], <span class="dt">pch=</span><span class="dv">15</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)
+
+means &lt;-<span class="st"> </span><span class="kw">colMeans</span>(golub.norm)
+<span class="kw">boxplot</span>(golub.norm[,<span class="dv">1</span>:<span class="dv">15</span>],<span class="dt">las=</span><span class="dv">2</span>,<span class="dt">main=</span><span class="st">&quot;Normalised expression&quot;</span>)
+<span class="kw">points</span>(<span class="dv">1</span>:<span class="dv">15</span>, means[<span class="dv">1</span>:<span class="dv">15</span>], <span class="dt">pch=</span><span class="dv">15</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="rmdexercise">
+<p>
+Make the y-axes to be the same range in both plots so that it is not misleading.
+</p>
+</div>
+</div>
+<div id="heatmaps" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Heatmaps</h3>
+<p>Another commonly used way of displaying biological datasets is the heatmap. This is commonly used for gene expression analysis, but it can be used for any dataset where multiple quantitative measurements are carried out on several samples. Not only can an R-generated heatmap help in the visualisation of these sort of datasets, but the heatmap command can also be used to automatically organise samples and/or measurements into dendrograms, showing the similarity relationship between them.</p>
+<p>For a first example, let’s plot a heatmap for our 100 key Golub dataset genes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Run the simplest heatmap, with all default settings</span>
+<span class="kw">heatmap</span>(golub<span class="fl">.100</span>)</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>If we want to follow the conventional red-green microarray style, we can use the <code>RdYlGn</code> colour palette from the <code>RColourBrewer</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+<span class="kw">heatmap</span>(golub<span class="fl">.100</span>, <span class="dt">col =</span> <span class="kw">brewer.pal</span>(<span class="dv">11</span>, <span class="dt">name=</span><span class="st">&#39;RdYlGn&#39;</span>))</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/heatmap-RdYlGn-1.png" width="672" /></p>
 <div class="rmdtip">
 <p>
-For the rest of this workshop, try to incorporate all the exercises that we do, along with comments and notes, into an RNotebook (or other knitR documents). You may want to create new documents for different chapters or exercises. The goal is that at the end of the workshop, you will be able to produce a final, reproducible report of all the analyses that you have done.
+Use <code>display.brewer.all()</code> or <code>display.brewer.pal(n,name)</code> to see the range of palettes available from this package.
 </p>
 </div>
-
+<p>By default, this actually gives a very presentable plot. Both rows and columns are automatically sorted to cluster most alike genes and samples together, and dendrograms are plotted for us automatically. Encouragingly, we can see that all the <span class="math inline">\(AML\)</span> and <span class="math inline">\(ALL\)</span> samples form two separate clusters. It might look better without the crowded gene names column, but that can be turned off easily with the setting <code>labRow = NA</code>.</p>
+<div class="rmdexercise">
+<p>
+For more practice, see if you can prepare a heat plot of the Indometh dataset:
+</p>
+<ul>
+<li>
+<em>Hints</em>:
+<ul>
+<li>
+you will need to convert the dataset into a matrix with one column per <span class="math inline"><em>S</em><em>u</em><em>b</em><em>j</em><em>e</em><em>c</em><em>t</em></span>. Set column names as Subject number and rownames as timepoints
+</li>
+<li>
+review the Rowv setting to keep time points in order in the dendrogram
+</li>
+<li>
+think about transforming the data to compensate for the exponential decrease of the concentration value
+</li>
+<li>
+try different colour palettes to highlight the data
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<!-- </div> -->
+</div>
+<div id="pca-plots" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> PCA plots</h3>
+<p>The final plotting option we will explore is principle component analysis, or PCA. PCA is often used where there are two or more categories of data, and multiple quantitative measurements on each, to quickly review whether the difference between the categories outweighs any noise or batch effect signals. Essentially, PCA collapses the dataset down to a small number of representative dimensions which can be plotted on a chart.</p>
+<p>PCA analysis is widely used in expression datasets, which have large numbers of measurements (one per gene), multiple replicates, and normally two or more categorical conditions, so we will test it with our Golub dataset. We will use the PCA function of the ‘mixOmics’ package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mixOmics)
+
+<span class="co"># Carry out the PCA on just the top 100 genes, with default parameters</span>
+<span class="co"># N.B. PCA data needs to have the samples in rows. Our data is by</span>
+<span class="co"># columns, so we need to transpose it</span>
+golub<span class="fl">.100</span>.pca &lt;-<span class="st"> </span><span class="kw">pca</span>(<span class="kw">t</span>(golub<span class="fl">.100</span>))
+
+<span class="co"># Then plot the data for the first two components, colouring the</span>
+<span class="co"># sample names for clarity</span>
+<span class="kw">plotIndiv</span>(golub<span class="fl">.100</span>.pca, <span class="dt">comp =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),
+          <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;red&#39;</span>, <span class="dv">27</span>), <span class="kw">rep</span>(<span class="st">&#39;blue&#39;</span>, <span class="dv">11</span>)))</code></pre></div>
+<p><img src="data-proc-qc-inter_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="rmdexercise">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+Generate a PCA plot for other components of the analysis
+</p>
+</li>
+<li>
+<p>
+Carry out a PCA analysis for the full (normalised, transformed) Golub dataset and generate a plot
+</p>
+</li>
+<li>
+<p>
+Does the data differentiate between the two sample types?
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="literate-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importing-and-reformatting-data-files.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="charts-and-graphical-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

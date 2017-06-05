@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="integrating-and-summarising-datasets.html">
-<link rel="next" href="combining-two-files-with-rows-in-common-1.html">
+<link rel="prev" href="combining-two-files-with-identical-row-identifiers.html">
+<link rel="next" href="charts-and-graphical-output.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -88,7 +88,7 @@ code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -130,16 +130,15 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3" data-path="extracting-specific-measurements.html"><a href="extracting-specific-measurements.html"><i class="fa fa-check"></i><b>5.3</b> Extracting specific measurements</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="integrating-datasets.html"><a href="integrating-datasets.html"><i class="fa fa-check"></i><b>6</b> Integrating datasets</a><ul>
-<li class="chapter" data-level="6.1" data-path="combining-two-files-with-identical-row-identifiers.html"><a href="combining-two-files-with-identical-row-identifiers.html"><i class="fa fa-check"></i><b>6.1</b> Combining two files with identical row identifiers</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="combining-two-files-with-identical-row-identifiers.html"><a href="combining-two-files-with-identical-row-identifiers.html#combining-two-files-with-rows-in-common"><i class="fa fa-check"></i><b>6.1.1</b> Combining two files with rows in common</a></li>
-</ul></li>
+<li class="chapter" data-level="6.1" data-path="combining-two-files-with-identical-row-identifiers.html"><a href="combining-two-files-with-identical-row-identifiers.html"><i class="fa fa-check"></i><b>6.1</b> Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="6.2" data-path="combining-two-files-with-rows-in-common.html"><a href="combining-two-files-with-rows-in-common.html"><i class="fa fa-check"></i><b>6.2</b> Combining two files with rows in common</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="charts-and-graphical-output.html"><a href="charts-and-graphical-output.html"><i class="fa fa-check"></i><b>7</b> Charts and graphical output</a><ul>
-<li class="chapter" data-level="7.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html"><i class="fa fa-check"></i><b>7.1</b> Standard R plotting functions</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#plot-function"><i class="fa fa-check"></i><b>7.1.1</b> Plot() function</a></li>
-<li class="chapter" data-level="7.1.2" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#heatmaps"><i class="fa fa-check"></i><b>7.1.3</b> Heatmaps</a></li>
-<li class="chapter" data-level="7.1.4" data-path="standard-r-plotting-functions.html"><a href="standard-r-plotting-functions.html#pca-plots"><i class="fa fa-check"></i><b>7.1.4</b> PCA plots</a></li>
+<li class="chapter" data-level="7.1" data-path="refresher-standard-r-plotting-functions.html"><a href="refresher-standard-r-plotting-functions.html"><i class="fa fa-check"></i><b>7.1</b> Refresher - standard R plotting functions</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="refresher-standard-r-plotting-functions.html"><a href="refresher-standard-r-plotting-functions.html#plot-function"><i class="fa fa-check"></i><b>7.1.1</b> Plot() function</a></li>
+<li class="chapter" data-level="7.1.2" data-path="refresher-standard-r-plotting-functions.html"><a href="refresher-standard-r-plotting-functions.html#boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="refresher-standard-r-plotting-functions.html"><a href="refresher-standard-r-plotting-functions.html#heatmaps"><i class="fa fa-check"></i><b>7.1.3</b> Heatmaps</a></li>
+<li class="chapter" data-level="7.1.4" data-path="refresher-standard-r-plotting-functions.html"><a href="refresher-standard-r-plotting-functions.html#pca-plots"><i class="fa fa-check"></i><b>7.1.4</b> PCA plots</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> ggplot2</a></li>
 </ul></li>
@@ -161,15 +160,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#remove-uninformative-measurements-1"><i class="fa fa-check"></i>5.1.2 Remove uninformative measurements</a></li>
 <li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#extracting-specific-measurements-1"><i class="fa fa-check"></i>5.1.3 Extracting specific measurements</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html"><i class="fa fa-check"></i>6 Integrating and summarising datasets</a></li>
-<li class="chapter" data-level="" data-path="combining-two-files-with-identical-row-identifiers-1.html"><a href="combining-two-files-with-identical-row-identifiers-1.html"><i class="fa fa-check"></i>Combining two files with identical row identifiers</a></li>
-<li class="chapter" data-level="" data-path="combining-two-files-with-rows-in-common-1.html"><a href="combining-two-files-with-rows-in-common-1.html"><i class="fa fa-check"></i>Combining two files with rows in common</a></li>
-<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html"><i class="fa fa-check"></i>7 Charts and graphical output</a><ul>
-<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#plot"><i class="fa fa-check"></i>Plot</a></li>
-<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#heatmaps-1"><i class="fa fa-check"></i>Heatmaps</a></li>
-<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#pca-plots-1"><i class="fa fa-check"></i>PCA plots</a></li>
+<li class="chapter" data-level="" data-path="an-alternative-practice-data-set.html"><a href="an-alternative-practice-data-set.html"><i class="fa fa-check"></i>5.2 An alternative practice data set</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html"><i class="fa fa-check"></i>6 Integrating and summarising datasets</a><ul>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html#combining-two-files-with-identical-row-identifiers-1"><i class="fa fa-check"></i>6.1.1 Combining two files with identical row identifiers</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html#combining-two-files-with-rows-in-common-1"><i class="fa fa-check"></i>6.1.2 Combining two files with rows in common</a></li>
+<li class="chapter" data-level="" data-path="integrating-and-summarising-datasets.html"><a href="integrating-and-summarising-datasets.html#linking-in-reference-data"><i class="fa fa-check"></i>6.1.3 Linking in reference data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i>6.2 ggplot2</a></li>
+<li class="chapter" data-level="" data-path="summarising-data.html"><a href="summarising-data.html"><i class="fa fa-check"></i>6.2 Summarising data</a><ul>
+<li class="chapter" data-level="" data-path="summarising-data.html"><a href="summarising-data.html#table-summaries"><i class="fa fa-check"></i>6.2.1 Table summaries</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html"><i class="fa fa-check"></i>7 Charts and graphical output</a><ul>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#plot"><i class="fa fa-check"></i>7.1.1 Plot</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#further-timecourse-plotting-practice"><i class="fa fa-check"></i>7.1.2 Further timecourse plotting practice</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#heatmaps-1"><i class="fa fa-check"></i>7.1.3 Heatmaps</a></li>
+<li class="chapter" data-level="" data-path="charts-and-graphical-output-1.html"><a href="charts-and-graphical-output-1.html#pca-plots-1"><i class="fa fa-check"></i>7.1.4 PCA plots</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i>7.2 ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendix-sessioninfo-for-this-version-of-the-course-material.html"><a href="appendix-sessioninfo-for-this-version-of-the-course-material.html"><i class="fa fa-check"></i>Appendix - SessionInfo for this version of the course material</a></li>
 <li class="divider"></li>
@@ -192,31 +198,93 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="combining-two-files-with-identical-row-identifiers-1" class="section level2 unnumbered">
-<h2>Combining two files with identical row identifiers</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load the R data file</span>
-<span class="kw">load</span>(<span class="kw">file.path</span>(DATADIR, <span class="st">&quot;golub_cbind.RData&quot;</span>))
-
-<span class="co"># Check the objects to make sure that they have the same number of elements/rows</span>
-<span class="co"># Remember, golub.names is a vector, the others are dataframes</span>
-<span class="kw">length</span>(golub.names)</code></pre></div>
-<pre><code>## [1] 7129</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(golub.all)</code></pre></div>
-<pre><code>## [1] 7129   55</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(golub.aml)</code></pre></div>
-<pre><code>## [1] 7129   21</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Then just join them together</span>
-golub.new.df &lt;-<span class="st"> </span><span class="kw">cbind</span>(golub.names, golub.all, golub.aml)
-<span class="kw">dim</span>(golub.new.df)</code></pre></div>
-<pre><code>## [1] 7129   77</code></pre>
+<div id="combining-two-files-with-rows-in-common" class="section level2">
+<h2><span class="header-section-number">6.2</span> Combining two files with rows in common</h2>
+<p><code>cbind</code> relies on the datasets being of the same size and in the same order. But what if that is not the case, and not all values are recorded for all samples? Well, if there is a common identifier between the datasets, we can use that to merge two dataframes. As an example, we will try with the built-in R datasets “beaver1” and “beaver2”, which give body temperature plots of two beavers over a period of about 18 hours.</p>
+<div class="rmdtip">
+<p>
+For a full list and descriptions of R’s built in example datasets, use the <code>data()</code> command
+</p>
 </div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(beaver1)</code></pre></div>
+<pre><code>##   day time  temp activ
+## 1 346  840 36.33     0
+## 2 346  850 36.34     0
+## 3 346  900 36.35     0
+## 4 346  910 36.42     0
+## 5 346  920 36.55     0
+## 6 346  930 36.69     0</code></pre>
+<p>For this example, we will merge the tables on the ‘time’ column, so we can start to look how beavers’ body temperature fluctuates through the day</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(beaver1)</code></pre></div>
+<pre><code>## [1] 114   4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(beaver2)</code></pre></div>
+<pre><code>## [1] 100   4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beaver.temp &lt;-<span class="st"> </span><span class="kw">merge</span>(beaver1, beaver2, <span class="dt">by =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">all =</span> <span class="ot">TRUE</span>, <span class="dt">sort =</span> <span class="ot">FALSE</span>)
+<span class="kw">dim</span>(beaver.temp)</code></pre></div>
+<pre><code>## [1] 115   7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(beaver.temp)</code></pre></div>
+<pre><code>##   time day.x temp.x activ.x day.y temp.y activ.y
+## 1  930   346  36.69       0   307  36.58       0
+## 2  940   346  36.71       0   307  36.73       0
+## 3  950   346  36.75       0   307  36.93       0
+## 4 1000   346  36.81       0   307  37.15       0
+## 5 1010   346  36.88       0   307  37.23       0
+## 6 1020   346  36.89       0   307  37.24       0</code></pre>
+<p><strong>What’s happening here?</strong></p>
+<table style="width:97%;">
+<colgroup>
+<col width="27%" />
+<col width="69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function/Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>by</code></td>
+<td>is the column to match the two datasets with. You can use column names, numbers or (to merge on rownames) <code>row.names</code>. <em>Note</em>, if you sort by <code>row.names</code>, then an extra column will be created in the output object containing the rownames information, while the rownames themselves of this new object will revert to 1, 2, 3…</td>
+</tr>
+<tr class="even">
+<td><code>all = TRUE</code></td>
+<td>means that a row will be created for every time point in either of the two samples. If one sample is missing data at that point, then values of “NA” will be entered in the output</td>
+</tr>
+<tr class="odd">
+<td><code>sort = FALSE</code></td>
+<td>by default, merge sorts the output object in the order of the merge column. In this dataset, the timecourse starts in mid-morning, and continues until after midnight the next day, so sorting is not appropriate in this case.</td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, even turning off sort doesn’t do what we want in this case. Rather than leaving the rows in the original order, they are reordered but in a somewhat unpredicatable way. There are functions in non-core R packages (like join in the <code>plyr</code> package that address this, but for the moment, a quick and dirty way is to add 2400 to all times after midnight and then sort the data by the time column:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beaver.temp[beaver.temp[, <span class="st">&#39;time&#39;</span>] &lt;<span class="st"> </span><span class="dv">800</span>, <span class="st">&#39;time&#39;</span>] &lt;-<span class="st"> </span>
+<span class="st">      </span>beaver.temp[beaver.temp[, <span class="st">&#39;time&#39;</span>] &lt;<span class="st"> </span><span class="dv">800</span>, <span class="st">&#39;time&#39;</span>] +<span class="st"> </span><span class="dv">2400</span>
+beaver.temp &lt;-<span class="st"> </span>beaver.temp[<span class="kw">order</span>(beaver.temp[,<span class="st">&#39;time&#39;</span>]),]</code></pre></div>
+<div class="rmdexercise">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+The <strong>golub_cbind.RData</strong> file you loaded earlier contains two, partially overlapping, datasets from the all and aml samples (all.subset and aml.subset). Use <code>merge()</code> to join these two dataframes using rownames as identifiers
+</p>
+</li>
+<li>
+<p>
+For the dataframe generated by the merge, relabel the rownames correctly, and remove the now redundant “Row.names” column from the dataframe
+</p>
+</li>
+</ol>
+</div>
+
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="integrating-and-summarising-datasets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="combining-two-files-with-rows-in-common-1.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="combining-two-files-with-identical-row-identifiers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="charts-and-graphical-output.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -230,13 +298,13 @@ require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "google": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": {}
 },
 "fontsettings": {
 "theme": "white",
